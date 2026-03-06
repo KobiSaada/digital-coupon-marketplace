@@ -16,12 +16,12 @@ The project is fully **Dockerized**, includes a minimal **admin interface**, and
 - [Architecture](#-architecture)
 - [Quick Start](#-quick-start)
 - [Features](#-features)
-- [Tech Stack](#-tech-stack)
+- [Tech Stack](#️-tech-stack)
+- [Design Decisions](#-design-decisions)
 - [Pricing Rules](#-pricing-rules)
 - [API Examples](#-api-examples)
 - [Screenshots](#-screenshots)
 - [Testing](#-testing)
-- [Docker](#-docker)
 - [Project Structure](#-project-structure)
 - [Notes](#-notes)
 - [Author](#-author)
@@ -62,40 +62,84 @@ Database
 
 # ⚡ Quick Start
 
-### Clone the repository
+### Prerequisites
+
+- **Docker & Docker Compose** (recommended)
+- **OR** Node.js 18+, PostgreSQL 14+
+
+### Environment Setup
+
+1. **Clone the repository:**
 
 ```bash
 git clone https://github.com/KobiSaada/digital-coupon-marketplace.git
 cd digital-coupon-marketplace
 ```
 
-### Run the system using Docker
+2. **Configure environment variables:**
+
+**Backend** (`backend/.env`):
+```bash
+PORT=3000
+NODE_ENV=development
+DATABASE_URL="postgresql://postgres:postgres@postgres:5432/coupon_marketplace?schema=public"
+ADMIN_TOKEN="admin-secret-token"
+```
+
+**Frontend** (`frontend/.env.local`):
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```
+
+> 💡 **Note:** `.env.example` files are provided in both directories. Copy them to `.env` / `.env.local` and adjust if needed.
+
+### Option 1: Run with Docker (Recommended)
 
 ```bash
 docker-compose up --build
 ```
 
-### Services will start
+All services start automatically with correct configuration.
+
+### Option 2: Run Locally (Without Docker)
+
+**1. Start PostgreSQL:**
+```bash
+# Make sure PostgreSQL is running on localhost:5432
+# Create database: coupon_marketplace
+```
+
+**2. Backend:**
+```bash
+cd backend
+npm install
+npx prisma migrate deploy
+npx prisma db seed
+npm run start:dev
+```
+
+**3. Frontend (in new terminal):**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Access the Application
 
 | Service     | Port | URL                                            |
 | ----------- | ---- | ---------------------------------------------- |
 | Backend API | 3000 | [http://localhost:3000](http://localhost:3000) |
 | Frontend    | 3001 | [http://localhost:3001](http://localhost:3001) |
 | PostgreSQL  | 5432 | localhost:5432                                 |
+| Swagger API | 3000 | [http://localhost:3000/api](http://localhost:3000/api) |
 
-### Swagger Documentation
+### Admin Credentials
 
-```text
-http://localhost:3000/api
 ```
-
-### Admin Panel
-
-```text
-http://localhost:3001/admin
+Username: admin
+Password: admin123
 ```
-
-**Credentials:** `admin / admin123`
 
 ---
 
@@ -118,27 +162,76 @@ http://localhost:3001/admin
 # 🛠️ Tech Stack
 
 ### Backend
-
-* NestJS
-* TypeScript
-* Prisma ORM
-* PostgreSQL
+- **NestJS** – Modular Node.js framework with dependency injection
+- **TypeScript** – Type safety and modern JavaScript features
+- **Prisma ORM** – Type-safe database client with migrations
+- **PostgreSQL** – Relational database with ACID compliance
 
 ### Frontend
-
-* Next.js
-* React
-* Tailwind CSS
+- **Next.js 14** – React framework with App Router
+- **React** – UI component library
+- **Tailwind CSS** – Utility-first CSS framework
 
 ### Infrastructure
+- **Docker** – Containerization
+- **Docker Compose** – Multi-container orchestration
 
-* Docker
-* Docker Compose
+### API & Documentation
+- **REST** – Pragmatic API design
+- **Swagger/OpenAPI** – Interactive API documentation
+- **JWT** – Stateless authentication
 
-### API
+---
 
-* REST
-* Swagger
+# 🧠 Design Decisions
+
+### 1. **Dual Sales Channel Architecture**
+Separated customer and reseller flows at the controller level to ensure:
+- Different pricing logic per channel
+- Independent authentication strategies
+- Clear business boundaries
+
+### 2. **Pricing Engine as Core Business Logic**
+Centralized pricing validation in a dedicated service layer:
+- Single source of truth for price calculations
+- Prevents manipulation by any sales channel
+- Easy to test and modify pricing rules
+
+### 3. **Atomic Coupon Generation**
+Used database transactions (`$transaction`) to ensure:
+- Coupon codes are unique
+- Product inventory is accurate
+- No partial purchases (all-or-nothing)
+
+### 4. **Reseller API as First-Class Citizen**
+Designed the reseller API with:
+- JWT authentication for security
+- Flexible pricing (within margin rules)
+- RESTful endpoints for integration
+
+### 5. **Admin Panel for Non-Technical Users**
+Built a minimal but functional admin UI:
+- CRUD operations without API knowledge
+- Real-time product management
+- Simple authentication (username/password)
+
+### 6. **Docker-First Development**
+Chose Docker Compose for consistency:
+- No "works on my machine" issues
+- Simplified onboarding for reviewers
+- Production-like environment locally
+
+### 7. **Prisma Over Raw SQL**
+Selected Prisma ORM for:
+- Type-safe queries (catches errors at compile time)
+- Automated migrations
+- Cleaner codebase vs raw SQL
+
+### 8. **Stateless Architecture**
+Used JWT tokens instead of sessions:
+- Scalable (no server-side session storage)
+- Works well with microservices
+- Easier to test
 
 ---
 
@@ -258,54 +351,11 @@ npm install
 npm test
 ```
 
-### Quick API validation
-
-```bash
-./test-reseller-api.sh
-```
-
 **Test Coverage:** `52+ automated tests`
 
 ---
 
-# 🐳 Docker
-
-The project runs fully inside containers.
-
-### Services
-
-* `backend` – NestJS API
-* `frontend` – Next.js UI
-* `postgres` – PostgreSQL database
-
-### Start everything
-
-```bash
-docker-compose up --build
-```
-
-### View logs
-
-```bash
-docker-compose logs -f
-```
-
-### Stop services
-
-```bash
-docker-compose down
-```
-
-### Reset database
-
-```bash
-docker-compose down -v
-docker-compose up -d
-```
-
----
-
-# 📁 Project Structure
+#  Project Structure
 
 ```text
 ├── backend/                # NestJS API
