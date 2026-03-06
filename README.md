@@ -1,310 +1,617 @@
-# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace
+# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace
 
 
 
-A full-stack digital marketplace platform for buying and selling coupon-based products through multiple channels: direct customers and external resellers via REST API.A full-stack backend system for a digital marketplace that sells coupon-based products through two channels:
-
-- **Direct customers** (via frontend)
-
-![Customer Shop](https://img.shields.io/badge/Frontend-Next.js_14-black?style=for-the-badge&logo=next.js)- **External resellers** (via REST API)
-
-![Backend](https://img.shields.io/badge/Backend-NestJS_10-red?style=for-the-badge&logo=nestjs)
-
-![Database](https://img.shields.io/badge/Database-PostgreSQL_15-blue?style=for-the-badge&logo=postgresql)## 🏗️ Architecture
-
-![Docker](https://img.shields.io/badge/Docker-Containerized-blue?style=for-the-badge&logo=docker)
-
-### Tech Stack
-
----- **Backend**: NestJS (TypeScript) with layered architecture
-
-- **Database**: PostgreSQL with Prisma ORM
-
-## 📋 Table of Contents- **Frontend**: Next.js (minimal UI)
-
-- **Deployment**: Fully Dockerized with docker-compose
-
-- [Features](#-features)
-
-- [Architecture](#-architecture)### Project Structure
-
-- [Tech Stack](#-tech-stack)```
-
-- [Project Structure](#-project-structure).
-
-- [Getting Started](#-getting-started)├── backend/
-
-- [API Documentation](#-api-documentation)│   ├── src/
-
-- [Testing](#-testing)│   │   ├── admin/              # Admin CRUD endpoints
-
-- [Screenshots](#-screenshots)│   │   ├── reseller/           # Reseller API (v1)
-
-- [Business Logic](#-business-logic)│   │   ├── customer/           # Customer purchase endpoints
-
-- [Troubleshooting](#-troubleshooting)│   │   ├── auth/               # Authentication guards
-
-│   │   ├── common/             # Error handling, filters
-
----│   │   └── prisma/             # Database service
-
-│   ├── prisma/
-
-## ✨ Features│   │   ├── schema.prisma       # Database schema
-
-│   │   └── seed.ts             # Initial data seeding
-
-### 🛍️ **Dual Selling Channels**│   └── Dockerfile
-
-- **Direct Customer Portal**: Beautiful web interface for end customers├── frontend/
-
-- **Reseller API**: RESTful API for external businesses to integrate and resell│   ├── app/
-
-│   │   ├── page.tsx            # Customer shop
-
-### 🔐 **Secure Authentication**│   │   └── admin/page.tsx      # Admin panel
-
-- JWT-based authentication with Bearer tokens│   ├── lib/api.ts              # API client
-
-- Admin panel with secure access control│   └── Dockerfile
-
-- Token refresh mechanism (24h access, 7d refresh)├── tests/                      # 🧪 Automated Jest tests (52+ tests)
-
-│   ├── reseller.test.js        # Reseller API tests
-
-### 💰 **Smart Pricing System**│   ├── admin.test.js           # Admin API tests
-
-- **Server-side pricing calculation**: `minimum_sell_price = cost_price × (1 + margin_percentage / 100)`│   ├── customer.test.js        # Customer API tests
-
-- **Reseller flexibility**: Can set their own markup (≥ minimum price)│   ├── helpers.js              # Test utilities
-
-- **Customer fixed pricing**: Always at minimum sell price│   └── README.md               # Testing documentation
-
-├── test-reseller-api.sh        # Quick API validation script
-
-### 🎫 **Dynamic Coupon Codes**└── docker-compose.yml
-
-- Automatic random code generation: `NETFLIX-{random}` → `NETFLIX-K7X9M2P4````
-
-- Support for STRING and IMAGE value types
-
-- Unique codes for each purchase## 🚀 Quick Start
+> Full-stack marketplace for buying and selling digital coupons with **dual channels**: Direct Customers & Reseller API
 
 
 
-### 🔒 **Atomic Operations**### Prerequisites
+![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js) ![NestJS](https://img.shields.io/badge/NestJS-10-red?logo=nestjs) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?logo=postgresql) ![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker) ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript)A full-stack digital marketplace platform for buying and selling coupon-based products through multiple channels: direct customers and external resellers via REST API.A full-stack backend system for a digital marketplace that sells coupon-based products through two channels:
 
-- Race condition prevention with database-level locking- Docker & Docker Compose
 
-- Concurrent request handling- (Optional) Node.js 18+ for local development
 
-- Product sold status management
+---- **Direct customers** (via frontend)
 
-### 1. Clone and Setup
 
-### 🎨 **Modern UI/UX**```bash
 
-- Responsive design with Tailwind CSS# Clone the repository
+## 📖 About![Customer Shop](https://img.shields.io/badge/Frontend-Next.js_14-black?style=for-the-badge&logo=next.js)- **External resellers** (via REST API)
 
-- Real-time coupon managementgit clone <your-repo-url>
 
-- Copy-to-clipboard functionalitycd "Backend Exercise – Digital Coupon Marketplace"
 
-- Professional color scheme
+Professional marketplace enabling **two sales channels**:![Backend](https://img.shields.io/badge/Backend-NestJS_10-red?style=for-the-badge&logo=nestjs)
 
-- Support for both URL and Data URI images# Copy environment variables
+- 🛍️ **Customer Shop** - Web interface for end customers
 
-cp backend/.env.example backend/.env
+- 🔌 **Reseller API** - REST API for external businesses![Database](https://img.shields.io/badge/Database-PostgreSQL_15-blue?style=for-the-badge&logo=postgresql)## 🏗️ Architecture
 
----cp frontend/.env.example frontend/.env
+
+
+**Key Features:**![Docker](https://img.shields.io/badge/Docker-Containerized-blue?style=for-the-badge&logo=docker)
+
+- ✅ JWT Authentication
+
+- ✅ Smart pricing (cost + margin)### Tech Stack
+
+- ✅ Dynamic coupon codes (`NETFLIX-{random}` → `NETFLIX-K7X9M2P4`)
+
+- ✅ Atomic operations (prevents race conditions)---- **Backend**: NestJS (TypeScript) with layered architecture
+
+- ✅ Admin CRUD panel
+
+- ✅ 52+ automated tests- **Database**: PostgreSQL with Prisma ORM
+
+
+
+---## 📋 Table of Contents- **Frontend**: Next.js (minimal UI)
+
+
+
+## 🏗️ Architecture- **Deployment**: Fully Dockerized with docker-compose
+
+
+
+```- [Features](#-features)
+
+┌──────────────────────────────────────────┐
+
+│         Client Layer                     │- [Architecture](#-architecture)### Project Structure
+
+│  ┌─────────┐  ┌────────┐  ┌──────────┐  │
+
+│  │Customer │  │ Admin  │  │ Reseller │  │- [Tech Stack](#-tech-stack)```
+
+│  │  Shop   │  │ Panel  │  │   API    │  │
+
+│  └────┬────┘  └───┬────┘  └────┬─────┘  │- [Project Structure](#-project-structure).
+
+└───────┼───────────┼────────────┼─────────┘
+
+        │           │            │- [Getting Started](#-getting-started)├── backend/
+
+        └───────────┼────────────┘
+
+                    ▼- [API Documentation](#-api-documentation)│   ├── src/
+
+        ┌───────────────────────────┐
+
+        │   NestJS Backend (API)    │- [Testing](#-testing)│   │   ├── admin/              # Admin CRUD endpoints
+
+        │  ┌────────┐  ┌─────────┐  │
+
+        │  │  Auth  │  │Business │  │- [Screenshots](#-screenshots)│   │   ├── reseller/           # Reseller API (v1)
+
+        │  │  +JWT  │  │  Logic  │  │
+
+        │  └────────┘  └─────────┘  │- [Business Logic](#-business-logic)│   │   ├── customer/           # Customer purchase endpoints
+
+        └─────────┬─────────────────┘
+
+                  ▼- [Troubleshooting](#-troubleshooting)│   │   ├── auth/               # Authentication guards
+
+        ┌───────────────────────────┐
+
+        │ Prisma ORM + PostgreSQL   ││   │   ├── common/             # Error handling, filters
+
+        │  ┌─────────┐ ┌─────────┐  │
+
+        │  │Products │ │ Coupons │  │---│   │   └── prisma/             # Database service
+
+        │  └─────────┘ └─────────┘  │
+
+        └───────────────────────────┘│   ├── prisma/
 
 ```
 
-## 🏗️ Architecture
+## ✨ Features│   │   ├── schema.prisma       # Database schema
+
+**Tech Stack:**
+
+- **Backend**: NestJS 10 + TypeScript + Prisma│   │   └── seed.ts             # Initial data seeding
+
+- **Frontend**: Next.js 14 + React + Tailwind CSS
+
+- **Database**: PostgreSQL 15### 🛍️ **Dual Selling Channels**│   └── Dockerfile
+
+- **DevOps**: Docker + Docker Compose
+
+- **Direct Customer Portal**: Beautiful web interface for end customers├── frontend/
+
+---
+
+- **Reseller API**: RESTful API for external businesses to integrate and resell│   ├── app/
+
+## 🚀 Quick Start
+
+│   │   ├── page.tsx            # Customer shop
+
+### Prerequisites
+
+- Docker 20.10+### 🔐 **Secure Authentication**│   │   └── admin/page.tsx      # Admin panel
+
+- Docker Compose 2.0+
+
+- JWT-based authentication with Bearer tokens│   ├── lib/api.ts              # API client
+
+> No need to install Node.js or PostgreSQL! Everything runs in containers.
+
+- Admin panel with secure access control│   └── Dockerfile
+
+### 1️⃣ Clone
+
+```bash- Token refresh mechanism (24h access, 7d refresh)├── tests/                      # 🧪 Automated Jest tests (52+ tests)
+
+git clone https://github.com/KobiSaada/digital-coupon-marketplace.git
+
+cd digital-coupon-marketplace│   ├── reseller.test.js        # Reseller API tests
+
+```
+
+### 💰 **Smart Pricing System**│   ├── admin.test.js           # Admin API tests
+
+### 2️⃣ Start
+
+```bash- **Server-side pricing calculation**: `minimum_sell_price = cost_price × (1 + margin_percentage / 100)`│   ├── customer.test.js        # Customer API tests
+
+docker-compose up -d
+
+```- **Reseller flexibility**: Can set their own markup (≥ minimum price)│   ├── helpers.js              # Test utilities
+
+*Builds, migrates, and seeds database (~30 seconds)*
+
+- **Customer fixed pricing**: Always at minimum sell price│   └── README.md               # Testing documentation
+
+### 3️⃣ Access
+
+├── test-reseller-api.sh        # Quick API validation script
+
+| Service | URL | Credentials |
+
+|---------|-----|-------------|### 🎫 **Dynamic Coupon Codes**└── docker-compose.yml
+
+| 🛍️ **Customer Shop** | http://localhost:3001 | - |
+
+| 🔧 **Admin Panel** | http://localhost:3001/admin | admin / admin123 |- Automatic random code generation: `NETFLIX-{random}` → `NETFLIX-K7X9M2P4````
+
+| 📡 **API Docs** | http://localhost:3000/api | - |
+
+| 🔌 **Reseller API** | http://localhost:3000/api/v1 | reseller1 / reseller123 |- Support for STRING and IMAGE value types
+
+
+
+---- Unique codes for each purchase## 🚀 Quick Start
+
+
+
+## 📸 Screenshots
+
+
+
+<div align="center">### 🔒 **Atomic Operations**### Prerequisites
+
+
+
+### 🛍️ Customer Shop- Race condition prevention with database-level locking- Docker & Docker Compose
+
+![Customer Shop](screenshots/customer-products.png)
+
+*Browse & purchase coupons*- Concurrent request handling- (Optional) Node.js 18+ for local development
+
+
+
+### 🎉 Purchase Success- Product sold status management
+
+![Purchase Modal](screenshots/purchase-success.png)
+
+*Instant coupon code delivery*### 1. Clone and Setup
+
+
+
+### 🔧 Admin Panel### 🎨 **Modern UI/UX**```bash
+
+![Admin Panel](screenshots/admin-table.png)
+
+*Full CRUD management*- Responsive design with Tailwind CSS# Clone the repository
+
+
+
+### 📦 My Coupons- Real-time coupon managementgit clone <your-repo-url>
+
+![My Coupons](screenshots/my-coupons-badge.png)
+
+*Personal collection*- Copy-to-clipboard functionalitycd "Backend Exercise – Digital Coupon Marketplace"
+
+
+
+</div>- Professional color scheme
+
+
+
+---- Support for both URL and Data URI images# Copy environment variables
+
+
+
+## 📡 API Quick Referencecp backend/.env.example backend/.env
+
+
+
+### Authentication---cp frontend/.env.example frontend/.env
+
+```bash
+
+curl -X POST http://localhost:3000/auth/admin/login \```
+
+  -H "Content-Type: application/json" \
+
+  -d '{"username":"admin","password":"admin123"}'## 🏗️ Architecture
+
+```
 
 ### 2. Run with Docker
 
+### Reseller Endpoints
+
 ``````bash
 
-┌─────────────────────────────────────────────────────────────┐# Build and start all services
+| Method | Endpoint | Description |
 
-│                      Client Layer                           │docker-compose up --build
+|--------|----------|-------------|┌─────────────────────────────────────────────────────────────┐# Build and start all services
+
+| `GET` | `/api/v1/products` | List available products |
+
+| `GET` | `/api/v1/products/{id}` | Get product details |│                      Client Layer                           │docker-compose up --build
+
+| `POST` | `/api/v1/products/{id}/purchase` | Purchase at reseller price |
 
 ├─────────────────────┬───────────────────────────────────────┤
 
-│   Customer Shop     │    Admin Panel    │  Reseller API    │# The application will be available at:
+**Purchase Example:**
 
-│   (Next.js)         │    (Next.js)      │  (External)      │# - Backend API: http://localhost:3000
+```bash│   Customer Shop     │    Admin Panel    │  Reseller API    │# The application will be available at:
 
-└─────────────────────┴───────────────────┴──────────────────┘# - API Documentation: http://localhost:3000/api/docs
+curl -X POST http://localhost:3000/api/v1/products/{id}/purchase \
+
+  -H "Authorization: Bearer YOUR_TOKEN" \│   (Next.js)         │    (Next.js)      │  (External)      │# - Backend API: http://localhost:3000
+
+  -H "Content-Type: application/json" \
+
+  -d '{"reseller_price": 20.00}'└─────────────────────┴───────────────────┴──────────────────┘# - API Documentation: http://localhost:3000/api/docs
+
+```
 
                             │# - Frontend: http://localhost:3001
 
-                            ▼# - Database: localhost:5432
+**Response:**
 
-┌─────────────────────────────────────────────────────────────┐```
+```json                            ▼# - Database: localhost:5432
 
-│                   Application Layer                         │
+{
 
-│  ┌─────────────────────────────────────────────────────┐   │### 3. Initial Setup
+  "product_id": "uuid",┌─────────────────────────────────────────────────────────────┐```
+
+  "final_price": 20.00,
+
+  "value_type": "STRING",│                   Application Layer                         │
+
+  "value": "NETFLIX-K7X9M2P4"
+
+}│  ┌─────────────────────────────────────────────────────┐   │### 3. Initial Setup
+
+```
 
 │  │              NestJS Backend                         │   │The database is automatically:
 
+### Admin Endpoints
+
 │  │  ┌──────────┐  ┌──────────┐  ┌──────────┐          │   │- Migrated with the schema
 
-│  │  │ Customer │  │  Admin   │  │ Reseller │          │   │- Seeded with sample data
+| Method | Endpoint | Description |
 
-│  │  │ Module   │  │  Module  │  │  Module  │          │   │
+|--------|----------|-------------|│  │  │ Customer │  │  Admin   │  │ Reseller │          │   │- Seeded with sample data
 
-│  │  └──────────┘  └──────────┘  └──────────┘          │   │**Default Credentials:**
+| `POST` | `/admin/products/coupons` | Create coupon |
 
-│  │                                                     │   │- **Admin**: username: `admin`, password: `admin123`
+| `GET` | `/admin/products` | List all products |│  │  │ Module   │  │  Module  │  │  Module  │          │   │
 
-│  │  ┌──────────────────────────────────────────┐      │   │- **Reseller Token**: `test-reseller-token-12345`
+| `PATCH` | `/admin/products/{id}` | Update product |
 
-│  │  │         Authentication Layer            │      │   │
+| `DELETE` | `/admin/products/{id}` | Delete product |│  │  └──────────┘  └──────────┘  └──────────┘          │   │**Default Credentials:**
 
-│  │  │  • JWT Strategy                         │      │   │---
 
-│  │  │  • Admin Guard                          │      │   │
+
+**Full Docs**: http://localhost:3000/api (Swagger UI)│  │                                                     │   │- **Admin**: username: `admin`, password: `admin123`
+
+
+
+---│  │  ┌──────────────────────────────────────────┐      │   │- **Reseller Token**: `test-reseller-token-12345`
+
+
+
+## 💼 Business Logic│  │  │         Authentication Layer            │      │   │
+
+
+
+### Pricing Formula│  │  │  • JWT Strategy                         │      │   │---
+
+```typescript
+
+minimum_sell_price = cost_price × (1 + margin_percentage / 100)│  │  │  • Admin Guard                          │      │   │
+
+```
 
 │  │  │  • Bearer Token Validation              │      │   │## 🧪 Testing
 
-│  │  └──────────────────────────────────────────┘      │   │
+**Example:**
 
-│  │                                                     │   │### Quick API Validation
+```│  │  └──────────────────────────────────────────┘      │   │
 
-│  │  ┌──────────────────────────────────────────┐      │   │
+Cost: $80 | Margin: 25% → Min Price: $100
 
-│  │  │         Business Logic Layer            │      │   │Run the automated test script:
+Reseller sells at $120 → Profit: $20│  │                                                     │   │### Quick API Validation
 
-│  │  │  • Pricing Calculation                  │      │   │
+Customer always pays: $100 (minimum)
 
-│  │  │  • Random Code Generation               │      │   │```bash
+```│  │  ┌──────────────────────────────────────────┐      │   │
 
-│  │  │  • Validation Rules                     │      │   │./test-reseller-api.sh
 
-│  │  └──────────────────────────────────────────┘      │   │```
 
-│  └─────────────────────────────────────────────────────┘   │
+### Random Codes│  │  │         Business Logic Layer            │      │   │Run the automated test script:
 
-└─────────────────────────────────────────────────────────────┘This tests:
+```typescript
 
-                            │- ✅ JWT Authentication
+Template: "NETFLIX-{random}"│  │  │  • Pricing Calculation                  │      │   │
 
-                            ▼- ✅ GET products (list & single)
+Generated: "NETFLIX-K7X9M2P4"  // 8 unique chars
 
-┌─────────────────────────────────────────────────────────────┐- ✅ POST purchase (valid, low price, already sold)
+```│  │  │  • Random Code Generation               │      │   │```bash
 
-│                    Data Access Layer                        │- ✅ Unauthorized access
 
-│  ┌─────────────────────────────────────────────────────┐   │
 
-│  │              Prisma ORM                             │   │### Automated Tests (Jest)
+### Atomic Operations│  │  │  • Validation Rules                     │      │   │./test-reseller-api.sh
+
+```typescript
+
+// Prevents duplicate sales with database-level locking│  │  └──────────────────────────────────────────┘      │   │```
+
+await prisma.product.updateMany({
+
+  where: { id, isSold: false },  // Only if NOT sold│  └─────────────────────────────────────────────────────┘   │
+
+  data: { isSold: true }
+
+});└─────────────────────────────────────────────────────────────┘This tests:
+
+// Returns count=0 if already sold → 409 error
+
+```                            │- ✅ JWT Authentication
+
+
+
+---                            ▼- ✅ GET products (list & single)
+
+
+
+## 🧪 Testing┌─────────────────────────────────────────────────────────────┐- ✅ POST purchase (valid, low price, already sold)
+
+
+
+### Automated Tests (52+)│                    Data Access Layer                        │- ✅ Unauthorized access
+
+```bash
+
+cd tests│  ┌─────────────────────────────────────────────────────┐   │
+
+npm install
+
+npm test│  │              Prisma ORM                             │   │### Automated Tests (Jest)
+
+```
 
 │  │  • Type-safe database queries                       │   │
 
-│  │  • Automatic migrations                             │   │**52+ automated tests** covering all APIs:
+### Manual API Test
 
-│  │  • Relationship management                          │   │
+```bash│  │  • Automatic migrations                             │   │**52+ automated tests** covering all APIs:
 
-│  └─────────────────────────────────────────────────────┘   │```bash
+./test-reseller-api.sh
 
-└─────────────────────────────────────────────────────────────┘cd tests
+```│  │  • Relationship management                          │   │
 
-                            │
 
-                            ▼# Install dependencies (first time)
 
-┌─────────────────────────────────────────────────────────────┐npm install
+**Coverage:**│  └─────────────────────────────────────────────────────┘   │```bash
 
-│                    Database Layer                           │
+- ✅ Authentication & JWT
 
-│  ┌─────────────────────────────────────────────────────┐   │# Run all tests
+- ✅ Pricing calculations└─────────────────────────────────────────────────────────────┘cd tests
 
-│  │           PostgreSQL 15                             │   │npm test
+- ✅ Race condition handling
+
+- ✅ Error scenarios                            │
+
+
+
+---                            ▼# Install dependencies (first time)
+
+
+
+## 🐳 Docker Commands┌─────────────────────────────────────────────────────────────┐npm install
+
+
+
+```bash│                    Database Layer                           │
+
+# Start
+
+docker-compose up -d│  ┌─────────────────────────────────────────────────────┐   │# Run all tests
+
+
+
+# Logs│  │           PostgreSQL 15                             │   │npm test
+
+docker-compose logs -f
 
 │  │  ┌──────────┐  ┌──────────┐  ┌──────────┐          │   │
 
-│  │  │ Products │  │ Coupons  │  │Resellers │          │   │# Run specific test suites
+# Rebuild
 
-│  │  │  Table   │  │  Table   │  │  Table   │          │   │npm run test:reseller    # Reseller API (25+ tests)
+docker-compose up --build -d│  │  │ Products │  │ Coupons  │  │Resellers │          │   │# Run specific test suites
+
+
+
+# Stop│  │  │  Table   │  │  Table   │  │  Table   │          │   │npm run test:reseller    # Reseller API (25+ tests)
+
+docker-compose down
 
 │  │  └──────────┘  └──────────┘  └──────────┘          │   │npm run test:admin       # Admin API (15+ tests)
 
-│  └─────────────────────────────────────────────────────┘   │npm run test:customer    # Customer API (12+ tests)
+# Reset (deletes data!)
+
+docker-compose down -v && docker-compose up -d│  └─────────────────────────────────────────────────────┘   │npm run test:customer    # Customer API (12+ tests)
+
+```
 
 └─────────────────────────────────────────────────────────────┘
 
+---
+
 ```# Run with coverage report
+
+## 📁 Project Structure
 
 npm run test:coverage
 
-### **Data Flow Example: Purchase Process**```
+```
 
+├── backend/              # NestJS API### **Data Flow Example: Purchase Process**```
 
+│   ├── src/
 
-```**Test Coverage:**
+│   │   ├── admin/       # Admin CRUD
 
-Customer Clicks "Buy" - Reseller API: Authentication, product listing, purchase flow, pricing validation, error handling
+│   │   ├── auth/        # JWT authentication
 
-    ↓- Admin API: CRUD operations, authentication, pricing calculations
+│   │   ├── customer/    # Customer endpoints```**Test Coverage:**
 
-Frontend sends POST to /customer/products/{id}/purchase- Customer API: Public endpoints, purchase flow, error scenarios
+│   │   ├── reseller/    # Reseller API
+
+│   │   └── common/      # Validators & errorsCustomer Clicks "Buy" - Reseller API: Authentication, product listing, purchase flow, pricing validation, error handling
+
+│   └── prisma/          # Database schema
+
+├── frontend/            # Next.js UI    ↓- Admin API: CRUD operations, authentication, pricing calculations
+
+│   ├── app/
+
+│   │   ├── page.tsx    # Customer shopFrontend sends POST to /customer/products/{id}/purchase- Customer API: Public endpoints, purchase flow, error scenarios
+
+│   │   └── admin/      # Admin panel
+
+│   └── lib/api.ts      # API client    ↓
+
+├── tests/              # Jest tests (52+)
+
+└── docker-compose.yml  # Container setupCustomer Controller receives requestSee `tests/README.md` for detailed testing documentation.
+
+```
 
     ↓
 
-Customer Controller receives requestSee `tests/README.md` for detailed testing documentation.
-
-    ↓
+---
 
 Customer Service:---
 
+## 🔧 Troubleshooting
+
     1. Fetch product from database
 
-    2. Validate product exists & not sold## 📊 Database Schema
+| Problem | Solution |
 
-    3. Calculate minimum_sell_price
+|---------|----------|    2. Validate product exists & not sold## 📊 Database Schema
 
-    4. Atomic update (mark as sold)### Products Table
+| Port in use | `lsof -i :3000` → `kill -9 <PID>` |
 
-    5. Generate random code (replace {random})Stores base product information (extensible for future product types).
+| DB connection failed | `docker-compose restart db` |    3. Calculate minimum_sell_price
 
-    ↓
+| Frontend won't load | `docker-compose logs frontend` |
 
-Return coupon code to customer### Coupons Table
-
-    ↓Extends products with:
-
-Frontend displays success + coupon code- `cost_price`: Internal cost
-
-```- `margin_percentage`: Profit margin
-
-- `value_type`: STRING or IMAGE
-
----- `value`: The actual coupon code/asset
+| Auth 401 | Get fresh token from `/auth/admin/login` |    4. Atomic update (mark as sold)### Products Table
 
 
 
-## 🛠️ Tech Stack### Resellers Table
+**Nuclear Reset:**    5. Generate random code (replace {random})Stores base product information (extensible for future product types).
 
-Stores reseller authentication tokens (hashed with bcrypt).
+```bash
 
-### **Backend**
+docker-compose down -v    ↓
 
-- **Framework**: NestJS 10.0.0## 🔐 Security & Business Logic
+docker-compose up --build -d
 
-- **Language**: TypeScript 5.9
+```Return coupon code to customer### Coupons Table
 
-- **ORM**: Prisma 5.22.0### Pricing Rules
 
-- **Database**: PostgreSQL 15 (Alpine)1. **Server-side calculation**: `minimum_sell_price = cost_price × (1 + margin_percentage / 100)`
 
-- **Validation**: class-validator2. **No client input**: Clients cannot set `cost_price` or `margin_percentage`
+---    ↓Extends products with:
 
-- **Authentication**: JWT (jsonwebtoken)3. **Reseller validation**: `reseller_price >= minimum_sell_price`
 
-- **API Docs**: Swagger/OpenAPI
+
+## 🎯 FeaturesFrontend displays success + coupon code- `cost_price`: Internal cost
+
+
+
+- ✅ Dual sales channels (Customer + Reseller)```- `margin_percentage`: Profit margin
+
+- ✅ JWT authentication (24h access, 7d refresh)
+
+- ✅ Server-side pricing validation- `value_type`: STRING or IMAGE
+
+- ✅ Atomic database operations
+
+- ✅ Dynamic code generation---- `value`: The actual coupon code/asset
+
+- ✅ Admin CRUD panel
+
+- ✅ Swagger documentation
+
+- ✅ Docker containerization
+
+- ✅ 52+ automated tests## 🛠️ Tech Stack### Resellers Table
+
+- ✅ TypeScript type safety
+
+- ✅ Responsive UIStores reseller authentication tokens (hashed with bcrypt).
+
+
+
+---### **Backend**
+
+
+
+## 📞 Links- **Framework**: NestJS 10.0.0## 🔐 Security & Business Logic
+
+
+
+- **GitHub**: https://github.com/KobiSaada/digital-coupon-marketplace- **Language**: TypeScript 5.9
+
+- **API Docs**: http://localhost:3000/api
+
+- **Frontend**: http://localhost:3001- **ORM**: Prisma 5.22.0### Pricing Rules
+
+
+
+---- **Database**: PostgreSQL 15 (Alpine)1. **Server-side calculation**: `minimum_sell_price = cost_price × (1 + margin_percentage / 100)`
+
+
+
+<div align="center">- **Validation**: class-validator2. **No client input**: Clients cannot set `cost_price` or `margin_percentage`
+
+
+
+**Made with ❤️ using NestJS + Next.js + PostgreSQL + Docker**- **Authentication**: JWT (jsonwebtoken)3. **Reseller validation**: `reseller_price >= minimum_sell_price`
+
+
+
+</div>- **API Docs**: Swagger/OpenAPI
+
 
 ### Atomic Purchase
 
