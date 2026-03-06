@@ -1,4 +1,3 @@
-````markdown
 # 🎟️ Digital Coupon Marketplace
 
 A **backend-focused full-stack system** for selling digital coupon products through two channels:
@@ -386,4 +385,4 @@ Full-Stack Engineer
 **Made with ❤️ using NestJS + Next.js + PostgreSQL + Docker**
 
 </div>
-```
+
