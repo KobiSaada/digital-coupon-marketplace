@@ -137,8 +137,7 @@ npm run dev
 ### Admin Credentials
 
 ```
-Username: admin
-Password: admin123
+Token_Demo: admin123
 ```
 
 ---
