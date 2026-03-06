@@ -78,20 +78,19 @@ cd digital-coupon-marketplace
 
 2. **Configure environment variables:**
 
-**Backend** (`backend/.env`):
+**Backend:**
 ```bash
-PORT=3000
-NODE_ENV=development
-DATABASE_URL="postgresql://postgres:postgres@postgres:5432/coupon_marketplace?schema=public"
-ADMIN_TOKEN="admin-secret-token"
+cp backend/.env.example backend/.env
+# Edit backend/.env with your configuration
 ```
 
-**Frontend** (`frontend/.env.local`):
+**Frontend:**
 ```bash
-NEXT_PUBLIC_API_URL=http://localhost:3000
+cp frontend/.env.example frontend/.env.local
+# Edit frontend/.env.local if needed
 ```
 
-> 💡 **Note:** `.env.example` files are provided in both directories. Copy them to `.env` / `.env.local` and adjust if needed.
+> 💡 **Note:** `.env.example` files contain template configurations. For Docker, default values work out of the box. For local setup, adjust `DATABASE_URL` to match your PostgreSQL credentials.
 
 ### Option 1: Run with Docker (Recommended)
 
