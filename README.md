@@ -25,7 +25,7 @@ The project is fully **Dockerized**, includes a minimal **admin interface**, and
 - [Project Structure](#-project-structure)
 - [Notes](#-notes)
 - [Author](#-author)
-- [Links](#-links)
+
 
 ---
 
@@ -355,19 +355,5 @@ This project was created as a backend engineering exercise focusing on:
 **Koby Saada**
 Full-Stack Engineer
 
----
 
-# 📞 Links
-
-* **GitHub:** [https://github.com/KobiSaada/digital-coupon-marketplace](https://github.com/KobiSaada/digital-coupon-marketplace)
-* **API Docs:** [http://localhost:3000/api](http://localhost:3000/api)
-* **Frontend:** [http://localhost:3001](http://localhost:3001)
-
----
-
-<div align="center">
-
-**Made with ❤️ using NestJS + Next.js + PostgreSQL + Docker**
-
-</div>
 
