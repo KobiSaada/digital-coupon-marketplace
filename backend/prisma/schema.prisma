@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enum for product types (extensible for future types)
+enum ProductType {
+  COUPON
+}
+
+// Enum for coupon value types
+enum CouponValueType {
+  STRING
+  IMAGE
+}
+
+// Base Product entity
+model Product {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  type        ProductType
+  imageUrl    String      @map("image_url")
+  isSold      Boolean     @default(false) @map("is_sold")
+  soldAt      DateTime?   @map("sold_at")
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+
+  // One-to-one relationship with Coupon
+  coupon Coupon?
+
+  @@map("products")
+}
+
+// Coupon extends Product
+model Coupon {
+  productId        String          @id @map("product_id")
+  costPrice        Decimal         @map("cost_price") @db.Decimal(10, 2)
+  marginPercentage Decimal         @map("margin_percentage") @db.Decimal(5, 2)
+  valueType        CouponValueType @map("value_type")
+  value            String
+
+  // Relation to Product
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("coupons")
+}
+
+// Resellers table for API authentication
+model Reseller {
+  id        String   @id @default(uuid())
+  name      String
+  tokenHash String   @unique @map("token_hash")
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("resellers")
+}
