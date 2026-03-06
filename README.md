@@ -1,4 +1,4 @@
-# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace
+# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/) [![NestJS](https://img.shields.io/badge/NestJS-10-red)](https://nestjs.com/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/) [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)> Full-stack marketplace for digital coupons with **dual channels**: Customer Shop & Reseller API
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/) [![NestJS](https://img.shields.io/badge/NestJS-10-red)](https://nestjs.com/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/) [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)> Full-stack marketplace for digital coupons with **dual sales channels**: Customer Shop & Reseller API
 
 
 
@@ -14,7 +14,7 @@
 
 
 
-## 🚀 Quick Start![Next.js](https://img.shields.io/badge/Next.js-14-black) ![NestJS](https://img.shields.io/badge/NestJS-10-red) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue) ![Docker](https://img.shields.io/badge/Docker-Ready-blue)> Full-stack marketplace for digital coupons with **dual channels**: Customer Shop & Reseller API> Full-stack marketplace for digital coupons with **dual channels**: Customer Shop & Reseller API
+## 🚀 Quick Start[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/) [![NestJS](https://img.shields.io/badge/NestJS-10-red)](https://nestjs.com/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/) [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)> Full-stack marketplace for digital coupons with **dual channels**: Customer Shop & Reseller API
 
 
 
@@ -30,7 +30,7 @@ docker-compose up -d
 
 
 
-**Access:**## 🚀 Quick Start[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/) [![NestJS](https://img.shields.io/badge/NestJS-10-red)](https://nestjs.com/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/) [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/) [![NestJS](https://img.shields.io/badge/NestJS-10-red)](https://nestjs.com/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/) [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)
+**Access:**## 🚀 Quick Start![Next.js](https://img.shields.io/badge/Next.js-14-black) ![NestJS](https://img.shields.io/badge/NestJS-10-red) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue) ![Docker](https://img.shields.io/badge/Docker-Ready-blue)> Full-stack marketplace for digital coupons with **dual channels**: Customer Shop & Reseller API> Full-stack marketplace for digital coupons with **dual channels**: Customer Shop & Reseller API
 
 - 🛍️ Shop: http://localhost:3001
 
@@ -46,7 +46,7 @@ git clone https://github.com/KobiSaada/digital-coupon-marketplace.git
 
 ## 📖 About
 
-cd digital-coupon-marketplace------
+cd digital-coupon-marketplace---
 
 Professional marketplace with **two channels**:
 
@@ -62,93 +62,245 @@ Professional marketplace with **two channels**:
 
 ---
 
-**Access:**## 🚀 Quick Start## 🚀 Quick Start
+**Access:**## 🚀 Quick Start[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/) [![NestJS](https://img.shields.io/badge/NestJS-10-red)](https://nestjs.com/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/) [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/) [![NestJS](https://img.shields.io/badge/NestJS-10-red)](https://nestjs.com/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/) [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)
 
 ## 🏗️ Architecture
 
 - 🛍️ Shop: http://localhost:3001
 
+![Architecture Diagram](screenshots/architecture.png)
+
+- 🔧 Admin: http://localhost:3001/admin (admin/admin123)
+
+---
+
+- 📡 API: http://localhost:3000/api
+
+## 📸 Screenshots
+
+```bash
+
+### 🛍️ Customer Shop
+
+![Customer Shop](screenshots/customer-shop.png)---
+
+
+
+### 🎉 Purchase Successgit clone https://github.com/KobiSaada/digital-coupon-marketplace.git
+
+![Purchase Success](screenshots/purchase-success.png)
+
+## 📖 About
+
+### 🔧 Admin Panel
+
+![Admin Panel](screenshots/admin-panel.png)cd digital-coupon-marketplace------
+
+
+
+### 🔐 Admin LoginProfessional marketplace with **two channels**:
+
+![Admin Login](screenshots/admin-login.png)
+
+- **Customer Shop** - Direct purchasesdocker-compose up -d
+
+### 📦 My Coupons
+
+![My Coupons](screenshots/my-coupons.png)- **Reseller API** - External business integration
+
+
+
+### 📡 API Documentation```
+
+![API Docs](screenshots/api-docs.png)
+
+**Stack:** NestJS • Next.js • PostgreSQL • Docker • Prisma
+
+---
+
+
+
+## 📡 API Examples
+
+---
+
+**Get Token:**
+
+```bash**Access:**## 🚀 Quick Start## 🚀 Quick Start
+
+curl -X POST http://localhost:3000/auth/admin/login \
+
+  -d '{"username":"admin","password":"admin123"}'## 🏗️ Architecture
+
 ```
 
-Customer Shop ──┐- 🔧 Admin: http://localhost:3001/admin (admin/admin123)
+- 🛍️ Shop: http://localhost:3001
 
-Admin Panel ────┼──→ NestJS API ──→ PostgreSQL
+**Purchase (Reseller):**
 
-Reseller API ───┘        ↓- 📡 API: http://localhost:3000/api
+```bash```
 
-                    Prisma ORM
+curl -X POST http://localhost:3000/api/v1/products/{id}/purchase \
 
-``````bash
+  -H "Authorization: Bearer TOKEN" \Customer Shop ──┐- 🔧 Admin: http://localhost:3001/admin (admin/admin123)
 
+  -d '{"reseller_price": 120.00}'
 
-
-------
-
-
-
-## 📸 Screenshots# Clone & navigate
+```Admin Panel ────┼──→ NestJS API ──→ PostgreSQL
 
 
 
-| Customer Shop | Purchase Success | Admin Panel | My Coupons |## 📖 About
+**Docs:** http://localhost:3000/apiReseller API ───┘        ↓- 📡 API: http://localhost:3000/api
+
+
+
+---                    Prisma ORM
+
+
+
+## 💼 Business Logic``````bash
+
+
+
+**Pricing:** `min_price = cost × (1 + margin/100)`  
+
+**Random Codes:** `NETFLIX-{random}` → `NETFLIX-K7X9M2P4`  
+
+**Atomic Sales:** Database-level locking prevents duplicates------
+
+
+
+---
+
+
+
+## 🧪 Testing## 📸 Screenshots# Clone & navigate
+
+
+
+```bash
+
+cd tests && npm test              # 52+ tests
+
+./test-reseller-api.sh            # Quick validation| Customer Shop | Purchase Success | Admin Panel | My Coupons |## 📖 About
+
+```
 
 |---------------|------------------|-------------|------------|
 
+---
+
 | ![Shop](screenshots/customer-products.png) | ![Success](screenshots/purchase-success.png) | ![Admin](screenshots/admin-table.png) | ![Coupons](screenshots/my-coupons-badge.png) |git clone https://github.com/KobiSaada/digital-coupon-marketplace.git```bash
 
+## 🐳 Docker
 
 
----Professional marketplace with **two channels**:
-
-
-
-## 📡 API Examples- **Customer Shop** - Direct purchasescd digital-coupon-marketplace# Clone & navigate
-
-
-
-**Get Token:**- **Reseller API** - External business integration
 
 ```bash
 
-curl -X POST http://localhost:3000/auth/admin/login \git clone https://github.com/KobiSaada/digital-coupon-marketplace.git
+docker-compose up -d              # Start---Professional marketplace with **two channels**:
 
-  -d '{"username":"admin","password":"admin123"}'
+docker-compose logs -f            # Logs
 
-```**Stack:** NestJS • Next.js • PostgreSQL • Docker • Prisma
-
-
-
-**Purchase (Reseller):**# Start everything (Docker required)cd digital-coupon-marketplace
-
-```bash
-
-curl -X POST http://localhost:3000/api/v1/products/{id}/purchase \---
-
-  -H "Authorization: Bearer TOKEN" \
-
-  -d '{"reseller_price": 120.00}'docker-compose up -d
+docker-compose down -v            # Reset
 
 ```
 
+## 📡 API Examples- **Customer Shop** - Direct purchasescd digital-coupon-marketplace# Clone & navigate
+
+---
+
+
+
+## 📁 Structure
+
+**Get Token:**- **Reseller API** - External business integration
+
+```
+
+├── backend/          # NestJS API```bash
+
+│   ├── src/
+
+│   │   ├── admin/   # CRUDcurl -X POST http://localhost:3000/auth/admin/login \git clone https://github.com/KobiSaada/digital-coupon-marketplace.git
+
+│   │   ├── auth/    # JWT
+
+│   │   ├── customer/  -d '{"username":"admin","password":"admin123"}'
+
+│   │   └── reseller/
+
+│   └── prisma/```**Stack:** NestJS • Next.js • PostgreSQL • Docker • Prisma
+
+├── frontend/         # Next.js
+
+└── tests/            # Jest (52+)
+
+```
+
+**Purchase (Reseller):**# Start everything (Docker required)cd digital-coupon-marketplace
+
+---
+
+```bash
+
+## 🔧 Troubleshooting
+
+curl -X POST http://localhost:3000/api/v1/products/{id}/purchase \---
+
+| Issue | Fix |
+
+|-------|-----|  -H "Authorization: Bearer TOKEN" \
+
+| Port in use | `lsof -i :3000` → `kill -9 <PID>` |
+
+| DB failed | `docker-compose restart db` |  -d '{"reseller_price": 120.00}'docker-compose up -d
+
+| Reset | `docker-compose down -v && docker-compose up -d` |
+
+```
+
+---
+
 ## 🏗️ Architecture
+
+## 🎯 Features
 
 **Docs:** http://localhost:3000/api
 
-```# Start everything (Docker required)
+✅ Dual channels • ✅ JWT auth • ✅ Smart pricing  
+
+✅ Atomic ops • ✅ Admin panel • ✅ 52+ tests  ```# Start everything (Docker required)
+
+✅ Swagger docs • ✅ Docker ready
+
+---
 
 ---
 
 ```
 
+## 📞 Links
+
 ## 💼 Business Logic
 
-Customer Shop ──┐docker-compose up -d
+**GitHub:** https://github.com/KobiSaada/digital-coupon-marketplace  
+
+**API:** http://localhost:3000/api  Customer Shop ──┐docker-compose up -d
+
+**Frontend:** http://localhost:3001
 
 **Pricing:** `min_price = cost × (1 + margin/100)`  
 
+---
+
 **Random Codes:** `NETFLIX-{random}` → `NETFLIX-K7X9M2P4`  Admin Panel ────┼──→ NestJS API ──→ PostgreSQL
 
-**Atomic Sales:** Database-level locking prevents duplicates
+<div align="center">
+
+Made with ❤️ using NestJS + Next.js + PostgreSQL + Docker**Atomic Sales:** Database-level locking prevents duplicates
+
+</div>
 
 Reseller API ───┘        ↓**Access:**```
 
