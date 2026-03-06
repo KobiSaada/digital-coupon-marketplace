@@ -227,33 +227,17 @@ No authentication required. Customer pays the minimum sell price.
 
 # 📸 Screenshots
 
-### Admin Login
+<p align="center">
 
-![Admin Login](screenshots/admin-login.png)
+<img src="screenshots/admin-login.png" width="170"/>
+<img src="screenshots/admin-panel.png" width="170"/>
+<img src="screenshots/products-list.png" width="170"/>
+<img src="screenshots/customer-shop.png" width="170"/>
+<img src="screenshots/purchase-success.png" width="170"/>
+<img src="screenshots/my-coupons.png" width="170"/>
+<img src="screenshots/api-docs.png" width="170"/>
 
-### Admin Panel
-
-![Admin Panel](screenshots/admin-panel.png)
-
-### Product Management
-
-![Products List](screenshots/products-list.png)
-
-### Customer Storefront
-
-![Customer Shop](screenshots/customer-shop.png)
-
-### Purchase Success
-
-![Purchase Success](screenshots/purchase-success.png)
-
-### My Coupons
-
-![My Coupons](screenshots/my-coupons.png)
-
-### API Documentation
-
-![API Docs](screenshots/api-docs.png)
+</p>
 
 ---
 
