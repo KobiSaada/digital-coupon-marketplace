@@ -229,13 +229,12 @@ No authentication required. Customer pays the minimum sell price.
 
 <p align="center">
 
-<img src="screenshots/admin-login.png" width="170"/>
-<img src="screenshots/admin-panel.png" width="170"/>
-<img src="screenshots/products-list.png" width="170"/>
-<img src="screenshots/customer-shop.png" width="170"/>
-<img src="screenshots/purchase-success.png" width="170"/>
-<img src="screenshots/my-coupons.png" width="170"/>
-<img src="screenshots/api-docs.png" width="170"/>
+<img src="screenshots/admin-login.png" width="300"/>
+<img src="screenshots/admin-panel.png" width="300"/>
+<img src="screenshots/products-list.png" width="300"/>
+<img src="screenshots/purchase-success.png" width="300"/>
+<img src="screenshots/my-coupons.png" width="300"/>
+<img src="screenshots/api-docs.png" width="300"/>
 
 </p>
 
