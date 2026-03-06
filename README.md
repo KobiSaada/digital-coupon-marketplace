@@ -1,370 +1,738 @@
-# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace
+# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace# 🎟️ Digital Coupon Marketplace
 
 
 
-A full-stack backend-focused system for selling digital coupon products through two channels:A full-stack backend-focused system for selling digital coupon products through two channels:
+A **backend-focused full-stack system** for selling digital coupon products through two channels:
 
 
+
+- **Direct customers** via the platform UI  A full-stack backend-focused system for selling digital coupon products through two channels:A full-stack backend-focused system for selling digital coupon products through two channels:
+
+- **External resellers** via a secure REST API  
+
+
+
+The system enforces **strict pricing rules**, supports **admin product management**, and exposes a **secure reseller API** while maintaining clear business logic boundaries.
 
 - **Direct customers** via the platform UI- **Direct customers** via the platform UI
 
+The project is fully **Dockerized**, includes a minimal **admin interface**, and persists data using **PostgreSQL**.
+
 - **External resellers** via a secure REST API- **External resellers** via a secure REST API
 
+---
 
+
+
+# 📑 Table of Contents
 
 The system enforces strict pricing rules, supports product management, and exposes reseller APIs while maintaining clear business logic boundaries.The system enforces strict pricing rules, supports product management, and exposes reseller APIs while maintaining clear business logic boundaries.
 
-
-
-The project is fully **Dockerized**, includes a minimal **admin interface**, and persists data in **PostgreSQL**.The project is fully **Dockerized**, includes a minimal **admin interface**, and persists data in **PostgreSQL**.
-
-
-
-------
-
-
-
-## 📑 Table of Contents# 🧠 System Overview
-
-
-
-- [Architecture](#-architecture)The system is composed of:
+- [Architecture](#-architecture)
 
 - [Quick Start](#-quick-start)
 
-- [Features](#-features)- **Admin Panel** – manage products and pricing
+- [Features](#-features)
 
-- [Tech Stack](#️-tech-stack)- **Customer Storefront** – purchase coupons directly
+- [Tech Stack](#️-tech-stack)The project is fully **Dockerized**, includes a minimal **admin interface**, and persists data in **PostgreSQL**.The project is fully **Dockerized**, includes a minimal **admin interface**, and persists data in **PostgreSQL**.
 
-- [API Examples](#-api-examples)- **Reseller API** – external partners can purchase coupons programmatically
+- [Pricing Rules](#-pricing-rules)
 
-- [Pricing Rules](#-pricing-rules)- **Pricing Engine** – enforces pricing rules and prevents invalid reseller pricing
+- [API Examples](#-api-examples)
 
-- [Screenshots](#-screenshots)- **Database** – stores products, coupons, and transactions
+- [Screenshots](#-screenshots)
 
-- [Testing](#-testing)
+- [Testing](#-testing)------
 
-- [Docker](#-docker)---
+- [Docker](#-docker)
 
 - [Project Structure](#-project-structure)
 
-- [Notes](#-notes)# 🛠️ Tech Stack
+- [Notes](#-notes)
+
+## 📑 Table of Contents# 🧠 System Overview
+
+---
 
 
 
----Backend
+# 🧱 Architecture
 
-- **NestJS**
+- [Architecture](#-architecture)The system is composed of:
 
-## 🧱 Architecture- **TypeScript**
+The backend follows a **layered architecture**:
 
-- **Prisma ORM**
+- [Quick Start](#-quick-start)
 
-![Architecture Diagram](screenshots/architecture.png)- **PostgreSQL**
+```
+
+Controller- [Features](#-features)- **Admin Panel** – manage products and pricing
+
+↓
+
+Service Layer- [Tech Stack](#️-tech-stack)- **Customer Storefront** – purchase coupons directly
+
+↓
+
+Business Logic- [API Examples](#-api-examples)- **Reseller API** – external partners can purchase coupons programmatically
+
+↓
+
+Repository / Prisma- [Pricing Rules](#-pricing-rules)- **Pricing Engine** – enforces pricing rules and prevents invalid reseller pricing
+
+↓
+
+Database- [Screenshots](#-screenshots)- **Database** – stores products, coupons, and transactions
+
+```
+
+- [Testing](#-testing)
+
+Key principles:
+
+- [Docker](#-docker)---
+
+- Separation of concerns
+
+- Business logic isolated from controllers- [Project Structure](#-project-structure)
+
+- Pricing rules enforced centrally
+
+- DTO validation- [Notes](#-notes)# 🛠️ Tech Stack
 
 
+
+### Architecture Diagram
+
+
+
+![Architecture](screenshots/architecture.png)---Backend
+
+
+
+---- **NestJS**
+
+
+
+# ⚡ Quick Start## 🧱 Architecture- **TypeScript**
+
+
+
+Clone the repository:- **Prisma ORM**
+
+
+
+```bash![Architecture Diagram](screenshots/architecture.png)- **PostgreSQL**
+
+git clone https://github.com/KobiSaada/digital-coupon-marketplace
+
+cd digital-coupon-marketplace
+
+```
 
 The backend follows a layered architecture:Frontend
 
+Run the system using Docker:
+
 - **Next.js**
 
-```- **React**
+```bash
+
+docker-compose up --build```- **React**
+
+```
 
 Controller- **Tailwind**
 
+Services will start:
+
    ↓
 
-Service LayerInfrastructure
+| Service     | Port | URL                                            |
 
-   ↓- **Docker**
+| ----------- | ---- | ---------------------------------------------- |Service LayerInfrastructure
+
+| Backend API | 3000 | [http://localhost:3000](http://localhost:3000) |
+
+| Frontend    | 3001 | [http://localhost:3001](http://localhost:3001) |   ↓- **Docker**
+
+| PostgreSQL  | 5432 | localhost:5432                                 |
 
 Business Logic- **Docker Compose**
 
+Swagger documentation:
+
    ↓
 
-Repository / PrismaAPI
+```
+
+http://localhost:3000/apiRepository / PrismaAPI
+
+```
 
    ↓- **REST**
+
+Admin panel:
 
 Database- **Swagger Documentation**
 
 ```
 
+http://localhost:3001/admin```
+
+```
+
 ---
+
+Credentials:
 
 **Key principles:**
 
-- Separation of concerns# 📦 Quick Start
+```
+
+admin / admin123- Separation of concerns# 📦 Quick Start
+
+```
 
 - Business logic isolated from controllers
 
+---
+
 - Pricing rules enforced centrallyClone the repository:
+
+# 🚀 Features
 
 - DTO validation
 
-```bash
+* Dual sales channels (Customer UI + Reseller API)
 
-**System Components:**git clone https://github.com/YOUR_USERNAME/coupon-marketplace
+* Admin product management (CRUD)```bash
 
-- **Admin Panel** – manage products and pricingcd coupon-marketplace
+* Secure reseller API
 
-- **Customer Storefront** – purchase coupons directlyRun the system using Docker:
+* Pricing validation engine**System Components:**git clone https://github.com/YOUR_USERNAME/coupon-marketplace
 
-- **Reseller API** – external partners can purchase coupons programmaticallydocker-compose up --build
+* Atomic database operations
+
+* JWT authentication- **Admin Panel** – manage products and pricingcd coupon-marketplace
+
+* Random coupon code generation
+
+* Dockerized environment- **Customer Storefront** – purchase coupons directlyRun the system using Docker:
+
+* PostgreSQL persistence
+
+* Swagger API documentation- **Reseller API** – external partners can purchase coupons programmaticallydocker-compose up --build
+
+* 52+ automated tests
 
 - **Pricing Engine** – enforces pricing rules and prevents invalid reseller pricing```
 
+---
+
 - **Database** – stores products, coupons, and transactionsSwagger documentation:
 
+# 🛠️ Tech Stack
 
+
+
+### Backend
 
 ---http://localhost:3000/api
 
+* NestJS
+
+* TypeScript
+
+* Prisma ORM
+
+* PostgreSQL## 📦 Quick StartFrontend:
 
 
-## 📦 Quick StartFrontend:
+
+### Frontend
 
 
 
-Clone the repository:http://localhost:3001
+* Next.jsClone the repository:http://localhost:3001
+
+* React
+
+* TailwindCSS
 
 
 
-```bash🧩 Domain Model
+### Infrastructure```bash🧩 Domain Model
 
-git clone https://github.com/KobiSaada/digital-coupon-marketplaceProduct
+
+
+* Dockergit clone https://github.com/KobiSaada/digital-coupon-marketplaceProduct
+
+* Docker Compose
 
 cd digital-coupon-marketplace
 
+### API
+
 ```Represents a sellable item.
 
+* REST
 
-
-Run the system using Docker:Fields:
-
-
-
-```bashid – UUID
-
-docker-compose up --build
-
-```name
+* Swagger
 
 
 
-Services will start:description
+---Run the system using Docker:Fields:
 
 
 
-| Service | Port | URL |type
+# 💰 Pricing Rules
 
-|---------|------|-----|
 
-| Backend API | 3000 | http://localhost:3000 |image_url
 
-| Frontend | 3001 | http://localhost:3001 |
+The system enforces strict pricing validation.```bashid – UUID
+
+
+
+### Formuladocker-compose up --build
+
+
+
+``````name
+
+minimum_sell_price = cost_price × (1 + margin_percentage / 100)
+
+```
+
+
+
+Example:Services will start:description
+
+
+
+* Cost: $80
+
+* Margin: 25%
+
+* Minimum Price: $100| Service | Port | URL |type
+
+
+
+### Admin Pricing|---------|------|-----|
+
+
+
+Admin defines:| Backend API | 3000 | http://localhost:3000 |image_url
+
+
+
+* `cost_price`| Frontend | 3001 | http://localhost:3001 |
+
+* `margin_percentage`
 
 | PostgreSQL | 5432 | localhost:5432 |created_at
 
+### Reseller Pricing
 
+
+
+Resellers must follow rules:
 
 **Swagger Documentation:**updated_at
 
+✅ Can set `reseller_price` ≥ `minimum_sell_price`  
 
+❌ Cannot sell below minimum price  
+
+❌ Cannot manipulate coupon values
 
 ```Coupon Product
 
+### Customer Pricing
+
 http://localhost:3000/api
+
+Customers always pay **exactly the minimum sell price**.
 
 ```A product that contains multiple coupons.
 
+All validations occur in the **pricing engine layer**.
 
+
+
+---
 
 **Admin Panel:**Additional fields:
 
+# 📡 API Examples
 
+
+
+### Authentication
 
 ```coupon_code
 
-http://localhost:3001/admin
-
-```expiration_date
-
-
-
-Credentials: `admin` / `admin123`price
-
-
-
----status
-
-
-
-## 🚀 Features💰 Pricing Rules
-
-
-
-- **Dual Sales Channels** – Customer UI + Reseller APIThe system enforces strict pricing logic:
-
-- **Admin Product Management** – Full CRUD operations
-
-- **Reseller API** – Secure REST API for external partnersAdmin Pricing
-
-- **Pricing Validation Engine** – Server-side pricing rules enforcement
-
-- **Atomic Operations** – Database-level locking prevents race conditionsAdmin defines the base product price.
-
-- **JWT Authentication** – Secure token-based auth
-
-- **Random Coupon Codes** – Dynamic code generation (e.g., `NETFLIX-K7X9M2P4`)Reseller Pricing
-
-- **Dockerized Environment** – Full containerization
-
-- **PostgreSQL Persistence** – Reliable data storageResellers must follow rules:
-
-- **Swagger API Documentation** – Interactive API docs
-
-- **52+ Automated Tests** – Comprehensive test coverageCannot sell below minimum allowed price
-
-
-
----Cannot manipulate internal coupon values
-
-
-
-## 🛠️ Tech StackAll pricing is validated by backend services
-
-
-
-### BackendValidation occurs in the pricing engine layer.
-
-- **NestJS** – Progressive Node.js framework
-
-- **TypeScript** – Type-safe development🔌 Reseller API
-
-- **Prisma ORM** – Type-safe database access
-
-- **PostgreSQL** – Relational databaseExternal partners can purchase coupons via REST API.
-
-
-
-### FrontendExample request:
-
-- **Next.js 14** – React framework
-
-- **React** – UI libraryPOST /api/resellers/purchase
-
-- **Tailwind CSS** – Utility-first CSS
-
-Body:
-
-### Infrastructure
-
-- **Docker** – Containerization{
-
-- **Docker Compose** – Multi-container orchestration  "productId": "123",
-
-  "quantity": 5
-
-### API}
-
-- **REST** – RESTful architecture
-
-- **Swagger** – API documentationResponse:
-
-
-
----{
-
-  "coupons": [
-
-## 📡 API Examples    "COUPON-AB123",
-
-    "COUPON-XF912"
-
-### Authentication  ]
-
-}
-
 ```bash
 
-curl -X POST http://localhost:3000/auth/admin/login \Security is handled through API tokens.
+curl -X POST http://localhost:3000/auth/admin/login \http://localhost:3001/admin
 
   -H "Content-Type: application/json" \
 
+  -d '{"username":"admin","password":"admin123"}'```expiration_date
+
+```
+
+
+
+### Reseller Purchase
+
+Credentials: `admin` / `admin123`price
+
+```
+
+POST /api/v1/products/{id}/purchase
+
+```
+
+---status
+
+Request:
+
+
+
+```json
+
+{## 🚀 Features💰 Pricing Rules
+
+  "reseller_price": 120.00
+
+}
+
+```
+
+- **Dual Sales Channels** – Customer UI + Reseller APIThe system enforces strict pricing logic:
+
+Response:
+
+- **Admin Product Management** – Full CRUD operations
+
+```json
+
+{- **Reseller API** – Secure REST API for external partnersAdmin Pricing
+
+  "product_id": "uuid",
+
+  "final_price": 120.00,- **Pricing Validation Engine** – Server-side pricing rules enforcement
+
+  "value": "NETFLIX-K7X9M2P4"
+
+}- **Atomic Operations** – Database-level locking prevents race conditionsAdmin defines the base product price.
+
+```
+
+- **JWT Authentication** – Secure token-based auth
+
+---
+
+- **Random Coupon Codes** – Dynamic code generation (e.g., `NETFLIX-K7X9M2P4`)Reseller Pricing
+
+# 📸 Screenshots
+
+- **Dockerized Environment** – Full containerization
+
+### Admin Login
+
+- **PostgreSQL Persistence** – Reliable data storageResellers must follow rules:
+
+![Admin Login](screenshots/admin-login.png)
+
+- **Swagger API Documentation** – Interactive API docs
+
+### Admin Panel
+
+- **52+ Automated Tests** – Comprehensive test coverageCannot sell below minimum allowed price
+
+![Admin Panel](screenshots/admin-panel.png)
+
+
+
+### Product Management
+
+---Cannot manipulate internal coupon values
+
+![Products](screenshots/products-list.png)
+
+
+
+### Customer Storefront
+
+## 🛠️ Tech StackAll pricing is validated by backend services
+
+![Customer Shop](screenshots/customer-shop.png)
+
+
+
+### Purchase Success
+
+### BackendValidation occurs in the pricing engine layer.
+
+![Purchase](screenshots/purchase-success.png)
+
+- **NestJS** – Progressive Node.js framework
+
+### My Coupons
+
+- **TypeScript** – Type-safe development🔌 Reseller API
+
+![My Coupons](screenshots/my-coupons.png)
+
+- **Prisma ORM** – Type-safe database access
+
+### API Documentation
+
+- **PostgreSQL** – Relational databaseExternal partners can purchase coupons via REST API.
+
+![API Docs](screenshots/api-docs.png)
+
+
+
+---
+
+### FrontendExample request:
+
+# 🧪 Testing
+
+- **Next.js 14** – React framework
+
+Tests include:
+
+- **React** – UI libraryPOST /api/resellers/purchase
+
+* Business logic validation
+
+* Pricing rule enforcement- **Tailwind CSS** – Utility-first CSS
+
+* API endpoint behavior
+
+* Atomic operationsBody:
+
+* Authentication flows
+
+### Infrastructure
+
+Run tests:
+
+- **Docker** – Containerization{
+
+```bash
+
+cd tests- **Docker Compose** – Multi-container orchestration  "productId": "123",
+
+npm install
+
+npm test  "quantity": 5
+
+```
+
+### API}
+
+Quick API test:
+
+- **REST** – RESTful architecture
+
+```bash
+
+./test-reseller-api.sh- **Swagger** – API documentationResponse:
+
+```
+
+
+
+Test coverage:
+
+---{
+
+```
+
+52+ automated tests  "coupons": [
+
+```
+
+## 📡 API Examples    "COUPON-AB123",
+
+---
+
+    "COUPON-XF912"
+
+# 🐳 Docker
+
+### Authentication  ]
+
+The system runs fully inside containers.
+
+}
+
+Services:
+
+```bash
+
+* backend (NestJS API)
+
+* frontend (Next.js UI)curl -X POST http://localhost:3000/auth/admin/login \Security is handled through API tokens.
+
+* postgres (database)
+
+  -H "Content-Type: application/json" \
+
+Start services:
+
   -d '{"username":"admin","password":"admin123"}'🧱 Architecture
+
+```bash
+
+docker-compose up --build```
 
 ```
 
 The backend follows a layered architecture:
 
+View logs:
+
 ### Reseller Purchase
-
-Controller
-
-```bash   ↓
-
-POST /api/v1/products/{id}/purchaseService Layer
-
-```   ↓
-
-Business Logic
-
-**Request:**   ↓
-
-Repository / Prisma
-
-```json   ↓
-
-{Database
-
-  "reseller_price": 120.00
-
-}Key principles:
-
-```
-
-Separation of concerns
-
-**Response:**
-
-Business logic isolated from controllers
-
-```json
-
-{Pricing rules enforced centrally
-
-  "product_id": "uuid",
-
-  "final_price": 120.00,DTO validation
-
-  "value_type": "STRING",
-
-  "value": "NETFLIX-K7X9M2P4"📸 Screenshots
-
-}Admin Panel
-
-```
-
-Manage products, pricing, and coupons.
-
-### Customer Purchase
-
-Product Management
 
 ```bash
 
-POST /customer/products/{id}/purchaseAdmins can create and edit coupon products.
+docker-compose logs -fController
 
 ```
 
-Storefront
+```bash   ↓
 
-No authentication required. Customer pays the minimum sell price.
+Stop services:
 
-Users can browse and purchase available coupons.
+POST /api/v1/products/{id}/purchaseService Layer
+
+```bash
+
+docker-compose down```   ↓
+
+```
+
+Business Logic
+
+Reset database:
+
+**Request:**   ↓
+
+```bash
+
+docker-compose down -vRepository / Prisma
+
+docker-compose up -d
+
+``````json   ↓
+
+
+
+---{Database
+
+
+
+# 📁 Project Structure  "reseller_price": 120.00
+
+
+
+```}Key principles:
+
+backend/
+
+ ├── src/```
+
+ │   ├── admin/
+
+ │   ├── auth/Separation of concerns
+
+ │   ├── customer/
+
+ │   ├── reseller/**Response:**
+
+ │   ├── common/
+
+ │   └── prisma/Business logic isolated from controllers
+
+ │
+
+frontend/```json
+
+ ├── app/
+
+ │   ├── page.tsx{Pricing rules enforced centrally
+
+ │   └── admin/
+
+ │  "product_id": "uuid",
+
+tests/
+
+ ├── reseller.test.js  "final_price": 120.00,DTO validation
+
+ ├── admin.test.js
+
+ └── customer.test.js  "value_type": "STRING",
+
+
+
+screenshots/  "value": "NETFLIX-K7X9M2P4"📸 Screenshots
+
+
+
+docker-compose.yml}Admin Panel
+
+README.md
+
+``````
+
+
+
+---Manage products, pricing, and coupons.
+
+
+
+# 📌 Notes### Customer Purchase
+
+
+
+This project was created as a backend engineering exercise focusing on:Product Management
+
+
+
+* Backend architecture```bash
+
+* Business rule enforcement
+
+* API designPOST /customer/products/{id}/purchaseAdmins can create and edit coupon products.
+
+* Dockerized environments
+
+* Production-like project structure```
+
+
+
+---Storefront
+
+
+
+# 👨‍💻 AuthorNo authentication required. Customer pays the minimum sell price.
+
+
+
+**Koby Saada**  Users can browse and purchase available coupons.
+
+Full-Stack Engineer
 
 ---
+
+GitHub: [https://github.com/KobiSaada/digital-coupon-marketplace](https://github.com/KobiSaada/digital-coupon-marketplace)
 
 🧪 Testing
 
